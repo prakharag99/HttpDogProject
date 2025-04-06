@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTTP Dog Project</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <% if (session && session.userId) { %>
+        <a href="/lists/search">Search</a>
+        <a href="/lists">My Lists</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+      <% } %>
+    </nav>
+    <hr/>
+    <div class="container">
+      <!-- We'll inject content or partial here -->
+      <%- body %>
+    </div>
+  </body>
+</html>

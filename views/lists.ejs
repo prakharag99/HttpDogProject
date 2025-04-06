@@ -1,0 +1,13 @@
+<% include('layout', { body: '' }); %>
+<h1>My Saved Lists</h1>
+<ul>
+  <% lists.forEach(list => { %>
+    <li>
+      <a href="/lists/<%= list._id %>"><%= list.name %></a> 
+      (created <%= list.creationDate.toDateString() %>)
+      <br/>
+      <a href="/lists/delete/<%= list._id %>" 
+         onclick="return confirm('Delete this list?');">Delete</a>
+    </li>
+  <% }); %>
+</ul>

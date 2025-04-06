@@ -1,0 +1,24 @@
+<% include('layout', { body: '' }); %>
+<h1>Edit List: <%= list.name %></h1>
+
+<form action="/lists/<%= list._id %>" method="POST">
+  <label>List Name:</label>
+  <input type="text" name="name" value="<%= list.name %>" /><br/>
+  
+  <label>Codes (comma separated):</label>
+  <input type="text" name="codes" 
+    value="<%= list.codes.join(',') %>" />
+  <br/>
+  <button type="submit">Update</button>
+</form>
+
+<hr/>
+<h2>Current Codes</h2>
+<ul>
+  <% list.codes.forEach((code, i) => { %>
+    <li>
+      Code: <%= code %><br/>
+      <img src="<%= list.imageLinks[i] %>" width="150" alt="Dog <%= code %>">
+    </li>
+  <% }) %>
+</ul>

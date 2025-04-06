@@ -1,0 +1,27 @@
+<% include('layout', { body: '' }); %>
+<h1>Search HTTP Codes</h1>
+<form action="/lists/search" method="POST">
+  <label>Filter (e.g. 2xx, 20x, 203):</label>
+  <input type="text" name="filter" value="<%= filter %>" />
+  <button type="submit">Search</button>
+</form>
+
+<% if (codes && codes.length > 0) { %>
+  <h2>Results:</h2>
+  <ul>
+    <% for (let i = 0; i < codes.length; i++) { %>
+      <li>
+        Code: <%= codes[i] %><br/>
+        <img src="<%= imageLinks[i] %>" width="150" alt="Dog <%= codes[i] %>">
+      </li>
+    <% } %>
+  </ul>
+
+  <h3>Save This List</h3>
+  <form action="/lists/save" method="POST">
+    <input type="hidden" name="filter" value="<%= filter %>">
+    <label>List Name:</label>
+    <input type="text" name="listName" required>
+    <button type="submit">Save</button>
+  </form>
+<% } %>
